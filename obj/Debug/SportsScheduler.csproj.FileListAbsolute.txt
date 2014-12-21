@@ -1,0 +1,10 @@
+C:\Projects\SportsScheduler\bin\Debug\SportsScheduler.dll
+C:\Projects\SportsScheduler\bin\Debug\SportsScheduler.pdb
+C:\Projects\SportsScheduler\bin\Debug\Xamarin.Forms.Core.dll
+C:\Projects\SportsScheduler\bin\Debug\Xamarin.Forms.Xaml.dll
+C:\Projects\SportsScheduler\bin\Debug\Xamarin.Forms.Core.xml
+C:\Projects\SportsScheduler\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Projects\SportsScheduler\obj\Debug\SportsScheduler.csprojResolveAssemblyReference.cache
+C:\Projects\SportsScheduler\obj\Debug\GenrePage.xaml.g.cs
+C:\Projects\SportsScheduler\obj\Debug\SportsScheduler.dll
+C:\Projects\SportsScheduler\obj\Debug\SportsScheduler.pdb
