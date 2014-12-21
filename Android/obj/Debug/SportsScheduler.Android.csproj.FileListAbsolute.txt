@@ -22,3 +22,5 @@ C:\Projects\SportsScheduler\Android\obj\Debug\res\drawable\icon.png
 C:\Projects\SportsScheduler\Android\obj\Debug\R.cs.flag
 C:\Projects\SportsScheduler\Android\obj\Debug\uploadflags.txt
 C:\Projects\SportsScheduler\Android\bin\Debug\SportsScheduler.dll.mdb
+C:\Projects\SportsScheduler\Android\bin\Debug\HtmlAgilityPack.dll
+C:\Projects\SportsScheduler\Android\bin\Debug\HtmlAgilityPack.pdb
