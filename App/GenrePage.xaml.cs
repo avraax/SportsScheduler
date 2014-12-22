@@ -21,8 +21,8 @@ namespace SportsScheduler
 			listView.ItemTemplate = new DataTemplate(typeof(TextCell));
 			listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");
 
-			listView.ItemSelected += async (sender, e) => {
-				var soccerEvent = (SoccerEvent)e.SelectedItem;
+			listView.ItemTapped += async (sender, e) => {
+				var soccerEvent = (SoccerEvent)e.Item;
 				var detailsPage = new DetailsPage(soccerEvent.EventId);
 				await Navigation.PushAsync(detailsPage);
 			};

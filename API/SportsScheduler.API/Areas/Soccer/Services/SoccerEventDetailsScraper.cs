@@ -41,6 +41,9 @@ namespace SportsScheduler.API.Areas.Soccer.Services
         {
             var list = new List<Channel>();
             var rows = doc.DocumentNode.SelectNodes("//*[@id='wc_channels']/tr");
+            if (rows == null)
+                return list;
+
             foreach (var row in rows)
             {
                 var td = row.Descendants("td").ToList();

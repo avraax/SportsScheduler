@@ -20,8 +20,8 @@ namespace SportsScheduler
 			listView.ItemTemplate = new DataTemplate(typeof(TextCell));
 			listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");
 
-			listView.ItemSelected += async (sender, e) => {
-				var genre = (Genre)e.SelectedItem;
+			listView.ItemTapped += async (sender, e) => {
+				var genre = (Genre)e.Item;
 				var genrePage = new GenrePage(genre);
 				await Navigation.PushAsync(genrePage);
 			};
