@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
-using SportsScheduler.Scraper;
+using System.Net.Http;
 
 namespace SportsScheduler
 {	
@@ -9,7 +9,7 @@ namespace SportsScheduler
 	{	
 		public GenrePage (Genre genre)
 		{
-			var soccerEvents = new Service ().GetSoccerEvents ();
+			var soccerEvents = new SoccerEventsService ().Get ();
 
 			var listView = new ListView
 			{
@@ -19,7 +19,6 @@ namespace SportsScheduler
 			listView.ItemsSource = soccerEvents;
 			listView.ItemTemplate = new DataTemplate(typeof(TextCell));
 			listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");
-
 
 			Content = new StackLayout
 			{
