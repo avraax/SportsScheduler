@@ -29,6 +29,7 @@ namespace SportsScheduler.API
             _container = new UnityContainer();
 
             _container.RegisterType<ISoccerEventsScraper, SoccerEventsScraper>();
+            _container.RegisterType<ISoccerEventDetailsScraper, SoccerEventDetailsScraper>();
         }
     }
 }

@@ -22,8 +22,8 @@ namespace SportsScheduler
 
 			listView.ItemSelected += async (sender, e) => {
 				var genre = (Genre)e.SelectedItem;
-				var todoPage = new GenrePage(genre);
-				await Navigation.PushAsync(todoPage);
+				var genrePage = new GenrePage(genre);
+				await Navigation.PushAsync(genrePage);
 			};
 
 			Content = new StackLayout

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Net.Http;
+using SportsScheduler.Services;
 
 namespace SportsScheduler
 {	
@@ -19,6 +20,12 @@ namespace SportsScheduler
 			listView.ItemsSource = soccerEvents;
 			listView.ItemTemplate = new DataTemplate(typeof(TextCell));
 			listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");
+
+			listView.ItemSelected += async (sender, e) => {
+				var soccerEvent = (SoccerEvent)e.SelectedItem;
+				var detailsPage = new DetailsPage(soccerEvent.EventId);
+				await Navigation.PushAsync(detailsPage);
+			};
 
 			Content = new StackLayout
 			{

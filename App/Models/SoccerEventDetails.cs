@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SportsScheduler
 {
 	public class SoccerEventDetails
 	{
+		public string EventId { get; set; }
 		public string HomeTeam { get; set; }
 		public string AwayTeam { get; set; }
-
-		public SoccerEventDetails ()
-		{
-		}
+		public DateTime StartTimeUtc { get; set; }
+		public IList<Channel> Channels { get; set; }
 	}
 }
