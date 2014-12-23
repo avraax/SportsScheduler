@@ -1,24 +1,70 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsScheduler", "SportsScheduler.csproj", "{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsScheduler.Android", "Android\SportsScheduler.Android.csproj", "{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsScheduler.WinPhone", "Windows\SportsScheduler.WinPhone.csproj", "{8C75F9D2-F190-4894-BC37-617EE08E321E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}.Release|x64.ActiveCfg = Release|Any CPU
+		{CF6D1BA5-DD42-4679-9095-2E6CE38FB2FE}.Release|x86.ActiveCfg = Release|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Release|ARM.ActiveCfg = Release|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Release|x64.ActiveCfg = Release|Any CPU
+		{36568D02-9CA6-4D42-8C85-7DAD6BAF6746}.Release|x86.ActiveCfg = Release|Any CPU
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Debug|ARM.ActiveCfg = Debug|ARM
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Debug|ARM.Build.0 = Debug|ARM
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Debug|ARM.Deploy.0 = Debug|ARM
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Debug|x86.ActiveCfg = Debug|x86
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Debug|x86.Build.0 = Debug|x86
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Debug|x86.Deploy.0 = Debug|x86
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Release|ARM.ActiveCfg = Release|ARM
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Release|ARM.Build.0 = Release|ARM
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Release|ARM.Deploy.0 = Release|ARM
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Release|x64.ActiveCfg = Release|Any CPU
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Release|x86.ActiveCfg = Release|x86
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Release|x86.Build.0 = Release|x86
+		{8C75F9D2-F190-4894-BC37-617EE08E321E}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = SportsScheduler.csproj

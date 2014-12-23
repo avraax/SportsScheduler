@@ -1,38 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
-using System.Net.Http;
 using SportsScheduler.Services;
 
 namespace SportsScheduler
-{	
-	public partial class GenrePage : ContentPage
-	{	
-		public GenrePage (Genre genre)
-		{
-			var soccerEvents = new SoccerEventsService ().Get ();
+{
+    public partial class GenrePage : ContentPage
+    {
+        public GenrePage(Genre genre)
+        {
+            var listView = SetupListView();
 
-			var listView = new ListView
-			{
-				RowHeight = 40
-			};
+            Content = new StackLayout
+            {
+                Spacing = 10,
+                Children = { listView }
+            };
 
-			listView.ItemsSource = soccerEvents;
-			listView.ItemTemplate = new DataTemplate(typeof(TextCell));
-			listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");
+            var soccerEvents = new SoccerEventsService().Get();
+            soccerEvents.ContinueWith((task) =>
+                                      {
+                                          listView.ItemsSource = task.Result;
+                                      },
+                TaskScheduler.FromCurrentSynchronizationContext());
+        }
 
-			listView.ItemTapped += async (sender, e) => {
-				var soccerEvent = (SoccerEvent)e.Item;
-				var detailsPage = new DetailsPage(soccerEvent.EventId);
-				await Navigation.PushAsync(detailsPage);
-			};
+        private ListView SetupListView()
+        {
+            var listView = new ListView
+                                {
+                                    RowHeight = 40,
+                                    ItemTemplate = new DataTemplate(typeof(TextCell))
+                                };
 
-			Content = new StackLayout
-			{
-				Spacing = 10,
-				Children = { listView }
-			};
-		}
-	}
+            listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");
+            listView.ItemTapped += async (sender, e) =>
+            {
+                var soccerEvent = (SoccerEvent)e.Item;
+                var detailsPage = new DetailsPage(soccerEvent.EventId);
+                await Navigation.PushAsync(detailsPage);
+            };
+
+            return listView;
+        }
+    }
 }
 

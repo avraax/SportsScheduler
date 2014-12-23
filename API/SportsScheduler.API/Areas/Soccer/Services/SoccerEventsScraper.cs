@@ -20,7 +20,9 @@ namespace SportsScheduler.API.Areas.Soccer.Services
             var html = GetHtml();
 
             var rowMatches = GetMatchesRows(html);
-
+            if (rowMatches == null)
+                return new List<SoccerEvent>();
+            
             return rowMatches.Select(ToSoccerEvent).ToList();
         }
 
@@ -40,7 +42,7 @@ namespace SportsScheduler.API.Areas.Soccer.Services
             {
                 client.Encoding = Encoding.UTF8;
                 var date = DateTime.Now;
-                return client.DownloadString(string.Format(Url, date.Year, date.Month, date.Day));
+                return client.DownloadString(string.Format(Url, date.Year, date.Month, 26));
             }
         }
 
@@ -49,9 +51,11 @@ namespace SportsScheduler.API.Areas.Soccer.Services
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
 
-            var liveCells = doc.DocumentNode.SelectNodes("//*[@id='matches']/table/tr[not(contains(@class, 'repeatrow'))]/td[@class='livecell']").ToList();
+            var liveCells = doc.DocumentNode.SelectNodes("//*[@id='matches']/table/tr[not(contains(@class, 'repeatrow'))]/td[@class='livecell']");
+            if (liveCells == null || !liveCells.Any())
+                return null;
 
-            return liveCells.Select(htmlNode => htmlNode.ParentNode).ToList();
+            return liveCells.Select(htmlNode => htmlNode.ParentNode);
         }
 
         private SoccerEvent ToSoccerEvent(HtmlNode row)
