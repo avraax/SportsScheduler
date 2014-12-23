@@ -2,7 +2,8 @@
 using System.Web.Http;
 using Microsoft.Practices.Unity;
 using SportsScheduler.API.App_Start;
-using SportsScheduler.API.Areas.Soccer.Services;
+using SportsScheduler.API.Areas.Soccer.Scrapers;
+using SportsScheduler.API.Areas.Soccer.Scrapers.Interfaces;
 
 namespace SportsScheduler.API
 {
@@ -28,8 +29,8 @@ namespace SportsScheduler.API
         {
             _container = new UnityContainer();
 
-            _container.RegisterType<ISoccerEventsScraper, SoccerEventsScraper>();
-            _container.RegisterType<ISoccerEventDetailsScraper, SoccerEventDetailsScraper>();
+            _container.RegisterType<ISoccerEventsScraper, LiveSoccerTvEventsScraper>();
+            _container.RegisterType<ISoccerEventDetailsScraper, LiveSoccerTvEventDetailsScraper>();
         }
     }
 }

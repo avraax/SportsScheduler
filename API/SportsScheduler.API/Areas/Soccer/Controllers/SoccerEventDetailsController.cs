@@ -1,15 +1,15 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SportsScheduler.API.Areas.Soccer.Services;
+using SportsScheduler.API.Areas.Soccer.Scrapers.Interfaces;
 
 namespace SportsScheduler.API.Areas.Soccer.Controllers
 {
-    public class EventDetailsController : ApiController
+    public class SoccerEventDetailsController : ApiController
     {
         private readonly ISoccerEventDetailsScraper _soccerEventDetailsScraper;
 
-        public EventDetailsController(ISoccerEventDetailsScraper soccerEventDetailsScraper)
+        public SoccerEventDetailsController(ISoccerEventDetailsScraper soccerEventDetailsScraper)
         {
             _soccerEventDetailsScraper = soccerEventDetailsScraper;
         }

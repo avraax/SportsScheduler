@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SportsScheduler.API.Areas.Soccer.Models
 {
-    public class SoccerEventDetails
+    public class SoccerEventDetail
     {
         public string EventId { get; set; }
         public string HomeTeam { get; set; }

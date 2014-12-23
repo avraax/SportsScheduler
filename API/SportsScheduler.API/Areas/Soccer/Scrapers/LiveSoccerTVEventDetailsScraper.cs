@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
 using SportsScheduler.API.Areas.Soccer.Models;
+using SportsScheduler.API.Areas.Soccer.Scrapers.Interfaces;
 using SportsScheduler.API.Helper;
 
-namespace SportsScheduler.API.Areas.Soccer.Services
+namespace SportsScheduler.API.Areas.Soccer.Scrapers
 {
-    public class SoccerEventDetailsScraper : ISoccerEventDetailsScraper
+    public class LiveSoccerTvEventDetailsScraper : ISoccerEventDetailsScraper
     {
         private const string Url = "http://www.livesoccertv.com/match/{0}/";
 
-        public SoccerEventDetails EventDetails(string eventId)
+        public SoccerEventDetail EventDetails(string eventId)
         {
             HtmlDocument doc = LoadDocument(eventId);
 
@@ -20,7 +21,7 @@ namespace SportsScheduler.API.Areas.Soccer.Services
             IList<Channel> channels = GetChannels(doc);
             var ticks = GetTicks(doc);
 
-            return new SoccerEventDetails
+            return new SoccerEventDetail
                    {
                        EventId = eventId,
                        StartTimeUtc = DateTimeHelper.FromMillisecondsSinceUnixEpoch(ticks),
@@ -93,12 +94,12 @@ namespace SportsScheduler.API.Areas.Soccer.Services
             }
         }
 
-        private SoccerEventDetails ToSoccerEventDetails(HtmlNode row)
+        private SoccerEventDetail ToSoccerEventDetails(HtmlNode row)
         {
             var id = row.Attributes["id"].Value;
             var link = row.Descendants("a").First(x => x.Attributes.Contains("id") && x.Attributes["id"].Value == "g" + id);
             var ticks = row.Descendants("span").First(x => x.Attributes.Contains("dv")).Attributes["dv"].Value;
-            return new SoccerEventDetails();
+            return new SoccerEventDetail();
         }
 
         class Teams

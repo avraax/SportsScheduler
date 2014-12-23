@@ -5,23 +5,24 @@ using System.Net;
 using System.Text;
 using HtmlAgilityPack;
 using SportsScheduler.API.Areas.Soccer.Models;
+using SportsScheduler.API.Areas.Soccer.Scrapers.Interfaces;
 using SportsScheduler.API.Helper;
 
-namespace SportsScheduler.API.Areas.Soccer.Services
+namespace SportsScheduler.API.Areas.Soccer.Scrapers
 {
-    public class SoccerEventsScraper : ISoccerEventsScraper
+    public class LiveSoccerTvEventsScraper : ISoccerEventsScraper
     {
         private const string Referrer = "www.livesoccertv.com";
         private const string BaseUrl = "http://www.livesoccertv.com";
         private const string Url = "http://www.livesoccertv.com/schedules/{0}-{1}-{2}/";
 
-        public IList<SoccerEvent> GetSoccerEvents()
+        public List<ISoccerEvent> Scrape()
         {
             var html = GetHtml();
 
             var rowMatches = GetMatchesRows(html);
             if (rowMatches == null)
-                return new List<SoccerEvent>();
+                return new List<ISoccerEvent>();
             
             return rowMatches.Select(ToSoccerEvent).ToList();
         }
@@ -58,7 +59,7 @@ namespace SportsScheduler.API.Areas.Soccer.Services
             return liveCells.Select(htmlNode => htmlNode.ParentNode);
         }
 
-        private SoccerEvent ToSoccerEvent(HtmlNode row)
+        private ISoccerEvent ToSoccerEvent(HtmlNode row)
         {
             var id = row.Attributes["id"].Value;
             var link = row.Descendants("a").First(x => x.Attributes.Contains("id") && x.Attributes["id"].Value == "g" + id);
