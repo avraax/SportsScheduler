@@ -1,13 +1,14 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace SportsScheduler
 {
 	public class App
-	{
+    {
+        private static Page homeView;
 		public static Page GetMainPage ()
-		{	
-			return new NavigationPage(new GenreOverview());
+		{
+		    return homeView ?? (homeView = new MasterPage());
+		    //return new NavigationPage(new GenreOverview());
 		}
 	}
 }

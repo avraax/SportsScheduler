@@ -3,16 +3,16 @@ using System.Net;
 
 namespace SportsScheduler.API.Helper
 {
-    public class CookieAwareWebClient : WebClient
+    public class WebClientEx : WebClient
     {
         private readonly CookieContainer _cookieContainer = new CookieContainer();
 
-        public CookieAwareWebClient()
+        public WebClientEx()
         {
             
         }
 
-        public CookieAwareWebClient(CookieContainer cookieContainer)
+        public WebClientEx(CookieContainer cookieContainer)
         {
             _cookieContainer = cookieContainer;
         }

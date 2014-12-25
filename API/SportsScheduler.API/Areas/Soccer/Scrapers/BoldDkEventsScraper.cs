@@ -16,15 +16,30 @@ namespace SportsScheduler.API.Areas.Soccer.Scrapers
         private const string BaseUrl = "http://www.bold.dk";
         private const string Url = "http://www.bold.dk/tv/";
 
-        public List<ISoccerEvent> Scrape()
+        private readonly BoldDkEventsConfig _config;
+
+        public BoldDkEventsScraper(BoldDkEventsConfig config)
+        {
+            _config = config;
+        }
+
+        public List<SoccerEvent> Scrape()
         {
             var html = GetHtml();
 
             var rowMatches = GetMatchesRows(html);
             if (rowMatches == null)
-                return new List<ISoccerEvent>();
+                return new List<SoccerEvent>();
             
             return rowMatches.Select(ToSoccerEvent).ToList();
+        }
+
+        public bool Enabled
+        {
+            get
+            {
+                return _config.Enabled;
+            }
         }
 
         private string GetHtml()
@@ -48,19 +63,34 @@ namespace SportsScheduler.API.Areas.Soccer.Scrapers
             return rows;
         }
 
-        private ISoccerEvent ToSoccerEvent(HtmlNode row)
+        private SoccerEvent ToSoccerEvent(HtmlNode row)
         {
             var id = row.Attributes["id"].Value;
             var link = row.Descendants("a").First(x => x.Attributes.Contains("id") && x.Attributes["id"].Value == "g" + id);
             var ticks = row.Descendants("span").First(x => x.Attributes.Contains("dv")).Attributes["dv"].Value;
             return new SoccerEvent
             {
-                Referrer = Referrer,
+                Source = Referrer,
                 EventId = id,
                 Title = link.Attributes["title"].Value,
                 Url = new Uri(BaseUrl + link.Attributes["href"].Value, UriKind.Absolute),
                 StartTimeUtc = DateTimeHelper.FromMillisecondsSinceUnixEpoch(long.Parse(ticks))
             };
+        }
+    }
+
+    public class BoldDkEventsConfig
+    {
+        public bool Enabled { get; set; }
+
+        public BoldDkEventsConfig(bool enabled)
+        {
+            Enabled = enabled;
+        }
+
+        public static BoldDkEventsConfig FromConfig()
+        {
+            return new BoldDkEventsConfig(false);
         }
     }
 }

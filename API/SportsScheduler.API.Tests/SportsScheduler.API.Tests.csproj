@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Integration\Areas\Soccer\Services\SoccerEventDetailsScraperTest.cs" />
     <Compile Include="Integration\Areas\Soccer\Services\SoccerEventsScraperTest.cs" />
     <Compile Include="Unit\BaseUnitTest.cs" />
     <Compile Include="Integration\BaseIntegrationTest.cs" />

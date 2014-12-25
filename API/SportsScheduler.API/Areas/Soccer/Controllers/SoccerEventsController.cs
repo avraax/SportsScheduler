@@ -1,25 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SportsScheduler.API.Areas.Soccer.Models;
-using SportsScheduler.API.Areas.Soccer.Scrapers;
-using WebGrease.Css.Extensions;
+using SportsScheduler.API.Areas.Soccer.Providers;
 
 namespace SportsScheduler.API.Areas.Soccer.Controllers
 {
     public class SoccerEventsController : ApiController
     {
+        private readonly MultipleSoccerScraperProvider _soccerScraperProvider;
+
+        public SoccerEventsController(MultipleSoccerScraperProvider soccerScraperProvider)
+        {
+            _soccerScraperProvider = soccerScraperProvider;
+        }
+
         [HttpGet]
         [Route("soccer/events")]
-        public HttpResponseMessage Index()
+        public HttpResponseMessage Get()
         {
-            var scrapers = SoccerConfig.Scrapers();
-
-            var soccerEvents = new List<ISoccerEvent>();
-            scrapers.ForEach(scraper => soccerEvents.AddRange(scraper.Scrape()));
-
-            return Request.CreateResponse(HttpStatusCode.OK, soccerEvents);
+            return Request.CreateResponse(HttpStatusCode.OK, _soccerScraperProvider.GetEvents());
         }
     }
 }

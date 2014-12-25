@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
 using SportsScheduler.API.Areas.Soccer.Models;
-using SportsScheduler.API.Areas.Soccer.Scrapers.Interfaces;
 using SportsScheduler.API.Helper;
 
 namespace SportsScheduler.API.Areas.Soccer.Scrapers
 {
-    public class LiveSoccerTvEventDetailsScraper : ISoccerEventDetailsScraper
+    public class LiveSoccerTvEventDetailsScraper
     {
         private const string Url = "http://www.livesoccertv.com/match/{0}/";
 
-        public SoccerEventDetail EventDetails(string eventId)
+        public SoccerEventDetails EventDetails(string eventId)
         {
             HtmlDocument doc = LoadDocument(eventId);
 
@@ -21,7 +19,7 @@ namespace SportsScheduler.API.Areas.Soccer.Scrapers
             IList<Channel> channels = GetChannels(doc);
             var ticks = GetTicks(doc);
 
-            return new SoccerEventDetail
+            return new SoccerEventDetails
                    {
                        EventId = eventId,
                        StartTimeUtc = DateTimeHelper.FromMillisecondsSinceUnixEpoch(ticks),
@@ -81,7 +79,7 @@ namespace SportsScheduler.API.Areas.Soccer.Scrapers
 
         private HtmlDocument LoadDocument(string eventId)
         {
-            var webClient = new CookieAwareWebClient();
+            var webClient = new WebClientEx();
             using (var client = webClient)
             {
                 client.Encoding = Encoding.UTF8;
@@ -94,12 +92,12 @@ namespace SportsScheduler.API.Areas.Soccer.Scrapers
             }
         }
 
-        private SoccerEventDetail ToSoccerEventDetails(HtmlNode row)
+        private SoccerEventDetails ToSoccerEventDetails(HtmlNode row)
         {
             var id = row.Attributes["id"].Value;
             var link = row.Descendants("a").First(x => x.Attributes.Contains("id") && x.Attributes["id"].Value == "g" + id);
             var ticks = row.Descendants("span").First(x => x.Attributes.Contains("dv")).Attributes["dv"].Value;
-            return new SoccerEventDetail();
+            return new SoccerEventDetails();
         }
 
         class Teams

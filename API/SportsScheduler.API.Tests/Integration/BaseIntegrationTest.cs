@@ -17,7 +17,6 @@ namespace SportsScheduler.API.Tests.Integration
             //Container.RegisterInstance<IRedisClientsManager>(new PooledRedisClientManager(1000, 10, redisServer));
 
             Container.RegisterType<ISoccerEventsScraper, LiveSoccerTvEventsScraper>();
-            Container.RegisterType<ISoccerEventDetailsScraper, LiveSoccerTvEventDetailsScraper>();
         }
 
         public void Dispose()

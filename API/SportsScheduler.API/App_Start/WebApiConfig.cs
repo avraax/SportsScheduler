@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using Microsoft.Practices.Unity;
 using SportsScheduler.API.App_Start;
@@ -29,8 +30,13 @@ namespace SportsScheduler.API
         {
             _container = new UnityContainer();
 
-            _container.RegisterType<ISoccerEventsScraper, LiveSoccerTvEventsScraper>();
-            _container.RegisterType<ISoccerEventDetailsScraper, LiveSoccerTvEventDetailsScraper>();
+            _container.RegisterType<ISoccerEventsScraper, LiveSoccerTvEventsScraper>("LiveSoccerTvEventsScraper");
+            _container.RegisterType<LiveSoccerEventsConfig>().RegisterInstance(LiveSoccerEventsConfig.FromConfig());
+
+            _container.RegisterType<ISoccerEventsScraper, BoldDkEventsScraper>("BoldDkEventsScraper");
+            _container.RegisterType<BoldDkEventsConfig>().RegisterInstance(BoldDkEventsConfig.FromConfig());
+
+            _container.RegisterType<IEnumerable<ISoccerEventsScraper>, ISoccerEventsScraper[]>();
         }
     }
 }

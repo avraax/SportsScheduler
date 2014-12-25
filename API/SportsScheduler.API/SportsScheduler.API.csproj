@@ -132,33 +132,27 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityResolver.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\Soccer\Controllers\SoccerEventDetailsController.cs" />
     <Compile Include="Areas\Soccer\Controllers\SoccerEventsController.cs" />
+    <Compile Include="Areas\Soccer\Providers\MultipleSoccerScraperProvider.cs" />
     <Compile Include="Areas\Soccer\Models\Channel.cs" />
-    <Compile Include="Areas\Soccer\Models\ISoccerEvent.cs" />
     <Compile Include="Areas\Soccer\Models\SoccerEvent.cs" />
-    <Compile Include="Areas\Soccer\Models\SoccerEventDetail.cs" />
-    <Compile Include="Areas\Soccer\Scrapers\Interfaces\ISoccerEventDetailsScraper.cs" />
+    <Compile Include="Areas\Soccer\Models\SoccerEventDetails.cs" />
     <Compile Include="Areas\Soccer\Scrapers\Interfaces\ISoccerEventsScraper.cs" />
     <Compile Include="Areas\Soccer\Scrapers\LiveSoccerTvEventDetailsScraper.cs" />
     <Compile Include="Areas\Soccer\Scrapers\BoldDkEventsScraper.cs" />
     <Compile Include="Areas\Soccer\Scrapers\LiveSoccerTvEventsScraper.cs" />
-    <Compile Include="Areas\Soccer\Scrapers\SoccerConfig.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="IBaseEventDetailScraper.cs" />
-    <Compile Include="IBaseEventsScraper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helper\CookieAwareWebClient.cs">
+    <Compile Include="Helper\DateTimeHelper.cs" />
+    <Compile Include="Helper\WebClientEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Helper\DateTimeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Areas\Soccer\Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -168,8 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Soccer\Views\Shared\" />
-    <Folder Include="Areas\Soccer\Views\SoccerEvents\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
