@@ -57,7 +57,7 @@ namespace SportsScheduler.API.Areas.Soccer.Scrapers
             {
                 client.Encoding = Encoding.UTF8;
                 var date = DateTime.Now;
-                var html = client.DownloadString(string.Format(EventsUrl, date.Year, date.Month, 26));
+                var html = client.DownloadString(string.Format(EventsUrl, date.Year, date.Month, date.Day));
 
                 var doc = new HtmlDocument();
                 doc.LoadHtml(html);

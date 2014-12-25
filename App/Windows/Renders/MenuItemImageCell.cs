@@ -15,6 +15,7 @@ namespace SportsScheduler.WinPhone.Renders
         {
             var menuItemImageCell = (MenuItemImageCell) cell;
             menuItemImageCell.TextColor = Color.Black;
+
             return base.GetTemplate(cell);
         }
     }

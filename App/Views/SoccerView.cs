@@ -44,10 +44,17 @@ namespace SportsScheduler.Views
 
         private ListView CreateMatchesListView()
         {
+
+            var cell = new DataTemplate(typeof(TextCell));
+            cell.SetBinding(TextCell.TextProperty, "Title");
+            cell.SetValue(TextCell.TextColorProperty, Color.Black);
+            
+            //cell.SetValue(TextCell.TextProperty, Font.SystemFontOfSize(NamedSize.Micro));
+
             var listView = new ListView
             {
                 RowHeight = 40,
-                ItemTemplate = new DataTemplate(typeof(TextCell))
+                ItemTemplate = cell
             };
 
             listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");
